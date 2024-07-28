@@ -1,0 +1,37 @@
+## Create and Attach an EBS Volume
+
+Step 1: Create an EBS Volume
+1.Navigate to the EC2 Dashboard:
+2.Create a Volume:
+                Click on "Volumes" under the "Elastic Block Store" section.
+                Click "Create Volume."
+                Specify the size (e.g., 10 GiB) and type (e.g., General Purpose SSD).
+                Select the same Availability Zone as your EC2 instance.
+                Click "Create Volume."
+
+Step 2: Attach the EBS Volume to Your Instance
+              Attach Volume:
+              Right-click the volume you created and select "Attach Volume."
+              Choose your EC2 instance from the list.
+              Click "Attach."
+
+
+Step 3: Configure the EBS Volume on Your Instance
+Connect to Your Instance via SSH:
+
+1.Identify the Volume
+lsblk
+
+2.Create a filesystem on the volume:
+sudo mkfs -t ext4 /dev/xvdf
+(make filesystem- -t flag stands for "type,  Ext4 (fourth extended filesystem))
+
+Create a mount point and mount the volume:
+sudo mkdir /mnt/myvolume
+
+3. Mount the Volume
+sudo mount /dev/xvdf /mnt/myvolume
+
+4.Add the volume to /etc/fstab 
+a.First, get the UUID of the device: sudo blkid /dev/xvdp
+b.Edit /etc/fstab: copy and paste of output
