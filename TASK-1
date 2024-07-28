@@ -1,0 +1,29 @@
+# launch one server and configure a web server
+
+Step 1: Launch an EC2 Instance
+
+1.Sign in to the AWS Management Console:
+2.Navigate to the EC2 Dashboard:
+3.Click on "Launch Instance."
+4.Choose an Amazon Machine Image (AMI). Select "Ubuntu Server 20.04 LTS (HVM), SSD Volume Type."
+5.Choose t2.micro (free tier eligible) for this example.
+6.Network: Choose the default VPC.
+7.Subnet: Choose the default subnet.
+8.Root: 8 GiB, General Purpose SSD (gp2).
+9.Add an additional EBS volume if needed.
+10.Create a new security group and Add rules:
+Type: HTTP, Protocol: TCP, Port Range: 80, Source: 0.0.0.0/0.
+Type: SSH, Protocol: TCP, Port Range: 22, Source: 0.0.0.0/0 (for SSH access).
+
+11.Click "Review and Launch."
+
+step2:
+1.Connect to Your Instance
+2.Update packages:    sudo apt update  && sudo apt upgrade -y
+3.Install Apache:     sudo apt install apache2 -y
+4.check status of the Apache service:    sudo systemctl status apache2
+
+
+
+
+
