@@ -1,0 +1,43 @@
+EC2:
+Amazon EC2 is a web service that allows you to run virtual servers, known as instances, in the cloud.
+These instances can be used for a variety of purposes, including running applications, hosting websites, and performing data analysis.
+
+Types: 
+1.General Purpose: Balanced CPU, memory, and networking (e.g., t3, m5).
+2.Compute Optimized: High-performance processors (e.g., c5).
+3.Memory Optimized: Large amounts of RAM (e.g., r5).
+4.Storage Optimized: High read/write speeds (e.g., i3).
+5.Accelerated Computing: GPUs for heavy compute tasks (e.g., p3).
+
+
+Security Groups:
+Virtual firewalls that control inbound and outbound traffic to instances.
+
+Elastic IP Addresses:
+Static, public IP addresses that can be remapped between instances.
+
+Key Pairs:
+Secure login credentials (public/private key pairs) for EC2 instances.
+
+Elastic Load Balancer (ELB):
+Distributes incoming traffic across multiple EC2 instances.
+Types: 
+1.Application Load Balancer, 
+2.Network Load Balancer, 
+3.Classic Load Balancer.
+
+Auto Scaling:
+Automatically adjusts the number of EC2 instances based on demand.
+
+Amazon Machine Images (AMIs):
+Pre-configured templates for your instances, including operating system and application software.
+
+Types: 
+Public 
+Private 
+Marketplace AMIs.
+
+Elastic Block Store (EBS):
+Persistent block storage for use with EC2 instances.
+
+Types: SSD (gp2, gp3, io1, io2) and HDD (st1, sc1).
