@@ -18,3 +18,17 @@ Static, public IP addresses that can be remapped between instances.
 
 Key Pairs:
 Secure login credentials (public/private key pairs) for EC2 instances.
+
+
+EC2 Launch Template:
+A launch template simplifies the process of launching instances by allowing you to pre-configure instance settings, 
+including the Amazon Machine Image (AMI), instance type, key pair, security groups, and other parameters.
+
+Key Components of a Launch Template
+Template Name and Description: A unique name and optional description for identifying the template.
+Source Template: Optionally, you can base your new template on an existing one.
+AMI ID: Specifies the image to use for launching the instance.
+Instance Type: Defines the hardware configuration of the instance.
+Key Pair: The SSH key pair used to connect to the instance.
+Security Groups: Defines the firewall rules for the instance.
+Instance Configuration: Additional settings like network interfaces, IAM roles, user data scripts, and storage volumes.
