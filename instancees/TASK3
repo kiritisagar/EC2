@@ -1,0 +1,78 @@
+Set Up Auto Scaling
+
+Setting up auto-scaling for EC2 instances in AWS involves configuring an Auto Scaling Group (ASG) and associated components to automatically adjust the number of EC2 instances based on demand. Here's a step-by-step guide:
+
+### **1. Prepare Your EC2 Instances**
+
+1. **Create an AMI (Amazon Machine Image)**:
+   - **Launch an EC2 Instance**: Start an instance with the desired configuration (OS, software, etc.).
+   - **Configure and Customize**: Install and configure any necessary applications and settings.
+   - **Create an AMI**: 
+     - Go to the [EC2 console](https://console.aws.amazon.com/ec2/).
+     - Select the instance, then click **Actions** > **Image and templates** > **Create image**.
+     - Provide an image name and description, then click **Create image**.
+
+### **2. Create a Launch Template or Launch Configuration**
+
+- **Launch Template** (Recommended):
+  - **Go to the EC2 Console**.
+  - **Select "Launch Templates"** from the left sidebar.
+  - **Click "Create launch template"**.
+  - **Fill in the Template Name** and other required details:
+    - **AMI ID**: Use the AMI you created.
+    - **Instance Type**: Choose the instance type for scaling.
+    - **Key Pair**: Select a key pair for SSH access.
+    - **Network Settings**: Configure VPC, subnets, and security groups.
+  - **Click "Create launch template"**.
+
+- **Launch Configuration** (Legacy):
+  - **Go to the EC2 Console**.
+  - **Select "Launch Configurations"** from the left sidebar.
+  - **Click "Create launch configuration"**.
+  - **Select AMI**: Use the AMI you created.
+  - **Choose Instance Type**: Select the instance type.
+  - **Configure Details**: Set up key pair, network, and security group.
+  - **Add Storage** and **Configure Scaling Policies**.
+  - **Click "Create launch configuration"**.
+
+### **3. Create an Auto Scaling Group**
+
+1. **Go to the EC2 Console**:
+   - Select **"Auto Scaling Groups"** from the left sidebar.
+   - **Click "Create Auto Scaling group"**.
+
+2. **Configure the Auto Scaling Group**:
+   - **Select Launch Template or Launch Configuration**:
+     - Choose the launch template or launch configuration created earlier.
+   - **Configure Auto Scaling Group Details**:
+     - **Auto Scaling Group Name**: Enter a name.
+     - **VPC and Subnets**: Choose the VPC and subnets where instances will launch.
+     - **Instance Tenancy**: Choose between default or dedicated.
+   - **Set Group Size**:
+     - **Desired Capacity**: Number of instances to start with.
+     - **Minimum Capacity**: Minimum number of instances.
+     - **Maximum Capacity**: Maximum number of instances.
+   - **Configure Scaling Policies**:
+     - **Add Scaling Policies**: Create policies to scale in (remove instances) or out (add instances) based on CloudWatch alarms.
+
+3. **Configure Notifications** (Optional):
+   - Set up notifications for scaling events using Amazon SNS (Simple Notification Service).
+
+4. **Configure Tags**:
+   - Add tags to identify and manage instances.
+
+5. **Review and Create**:
+   - Review the configuration.
+   - Click **"Create Auto Scaling group"**.
+
+### **4. Set Up Scaling Policies**
+
+1. **Create CloudWatch Alarms**:
+   - Go to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/).
+   - **Create Alarm**:
+     - **Metric**: Choose a metric related to CPU utilization, network traffic, etc.
+     - **Conditions**: Set thresholds for scaling up or down.
+     - **Actions**: Link the alarm to your Auto Scaling group to trigger scaling policies.
+
+2. **Attach Alarms to Scaling Policies**:
+   - In the Auto Scaling group settings, attach CloudWatch alarms to the scaling policies created earlier.
